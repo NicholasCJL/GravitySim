@@ -3,6 +3,7 @@ Contains basic simulations of gravity with different numerical and simulation me
 .NET 4 framework required.
 
 How to use:
+
 1. Enter a numerical value into the Vx, Vy, and mass fields. Click 'Change Parameters'.
 
 2. Step 1 will make any new objects have the entered parameters and can be repeated multiple times. Click on the black space to add the object.
