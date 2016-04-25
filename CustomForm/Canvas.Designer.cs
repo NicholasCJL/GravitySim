@@ -1,4 +1,4 @@
-﻿namespace SimpleGrav {
+namespace SimpleGrav {
    partial class Canvas {
       /// <summary>
       /// Required designer variable.
@@ -50,18 +50,18 @@
          this.sidebar.Controls.Add(this.Reset);
          this.sidebar.Controls.Add(this.timestep);
          this.sidebar.Controls.Add(this.label5);
+         this.sidebar.Controls.Add(this.Start);
          this.sidebar.Controls.Add(this.SimMethod);
          this.sidebar.Controls.Add(this.IntMethod);
-         this.sidebar.Controls.Add(this.Start);
          this.sidebar.Controls.Add(this.FPSCounter);
          this.sidebar.Controls.Add(this.label6);
          this.sidebar.Controls.Add(this.label4);
-         this.sidebar.Controls.Add(this.mass);
          this.sidebar.Controls.Add(this.ObjCounter);
          this.sidebar.Controls.Add(this.label3);
          this.sidebar.Controls.Add(this.UpdateInput);
          this.sidebar.Controls.Add(this.label2);
          this.sidebar.Controls.Add(this.label1);
+         this.sidebar.Controls.Add(this.mass);
          this.sidebar.Controls.Add(this.vel_y);
          this.sidebar.Controls.Add(this.vel_x);
          this.sidebar.Dock = System.Windows.Forms.DockStyle.Right;
@@ -158,13 +158,6 @@
          this.label4.TabIndex = 8;
          this.label4.Text = "Mass";
          // 
-         // mass
-         // 
-         this.mass.Location = new System.Drawing.Point(56, 161);
-         this.mass.Name = "mass";
-         this.mass.Size = new System.Drawing.Size(100, 20);
-         this.mass.TabIndex = 7;
-         // 
          // ObjCounter
          // 
          this.ObjCounter.AutoSize = true;
@@ -210,6 +203,13 @@
          this.label1.Size = new System.Drawing.Size(19, 13);
          this.label1.TabIndex = 2;
          this.label1.Text = "Vx";
+         // 
+         // mass
+         // 
+         this.mass.Location = new System.Drawing.Point(56, 161);
+         this.mass.Name = "mass";
+         this.mass.Size = new System.Drawing.Size(100, 20);
+         this.mass.TabIndex = 7;
          // 
          // vel_y
          // 
