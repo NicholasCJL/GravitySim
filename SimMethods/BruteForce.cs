@@ -1,5 +1,3 @@
-//implements ICalculator interface
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +9,7 @@ namespace SimpleGrav {
    public class SimpleCalculator : ICalculator {
       public static bool Euler = true;
       public static bool BH = false;
-      public static Double G = 1.0;
+      public static Double G = 100.0;
       public List<Body> bodies { get; set; } = new List<Body>();
 
       void ICalculator.AddBody(Body body) {
@@ -34,6 +32,19 @@ namespace SimpleGrav {
             if((bodies[i].x > MainFile.canvas.xmax)|(bodies[i].x < MainFile.canvas.xmin)|(bodies[i].y > MainFile.canvas.ymax)|(bodies[i].y < MainFile.canvas.ymin)) {
                bodies.RemoveAt(i);
             } 
+            else {
+               for(Int32 j=i-1; j>=0; j--) {
+                  if(Collision(bodies[i], bodies[j])) {
+                     bodies[j].vx = (bodies[j].vx * bodies[j].m + bodies[i].vx * bodies[i].m) / (bodies[i].m + bodies[j].m);
+                     bodies[j].vy = (bodies[j].vy * bodies[j].m + bodies[i].vy * bodies[i].m) / (bodies[i].m + bodies[j].m);
+                     bodies[j].d *= Math.Pow((Math.Pow(bodies[i].d,3) + Math.Pow(bodies[j].d,3)) / (Math.Pow(bodies[j].d,3)), 1.0 / 3);
+                     bodies[j].m += bodies[i].m;
+                     bodies.RemoveAt(i);
+                     break;
+                  }
+               }
+
+            }
          }
          
          if (Euler) {
@@ -71,6 +82,14 @@ namespace SimpleGrav {
                bodies[i].ay = acc[1];
             }
          }
+      }
+
+      private bool Collision(Body a, Body b) {
+         Double separation = DistanceTo(a, b);
+         if((separation <= a.d/2)|(separation <= b.d / 2)) {
+            return true;
+         }
+         return false;
       }
 
       private Double[] acceleration(Int32 index) {
