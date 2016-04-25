@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -64,6 +64,8 @@ namespace SimpleGrav {
          timer.Stop();
          MainFile.Reset();
          started = false;
+         ObjCounter.Text = Convert.ToString(MainFile.Calculator.bodies.Count);
+         Refresh();
       }
 
       private void Start_Click(object sender, EventArgs e) {
@@ -80,6 +82,7 @@ namespace SimpleGrav {
 
       protected override void OnPaint(PaintEventArgs e) {
          base.OnPaint(e);
+         e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
          if (!started) {
             for(Int32 i=0; i<MainFile.preloadbodies.Count; i++) {
                e.Graphics.FillEllipse(Palette[MainFile.preloadbodies[i].color], Convert.ToSingle(MainFile.preloadbodies[i].x - MainFile.preloadbodies[i].d / 2) / 100, Convert.ToSingle(MainFile.preloadbodies[i].y - MainFile.preloadbodies[i].d / 2) / 100, Convert.ToSingle(MainFile.preloadbodies[i].d/100), Convert.ToSingle(MainFile.preloadbodies[i].d/100));
